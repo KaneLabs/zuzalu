@@ -2,15 +2,13 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { createClient } from "@supabase/supabase-js"
 import authMiddleware from "../../hooks/auth"
 
-
-
-const supabaseUrl = "https://polcxtixgqxfuvrqgthn.supabase.co"
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey as string)
+const supabase = createClient(supabaseUrl as string, supabaseKey as string)
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const response = await supabase.from("events").select(`*, sessions (*)`)
+        const response = await supabase.from("favorited_events").select("*,users(*),events(*)")
 
         res.status(200).send(response.data)
     } catch (err: any) {
