@@ -150,7 +150,7 @@ const CalendarPage = ({ sessions, events }: Props) => {
 
     return (
         <BaseTemplate>
-            <div className="flex flex-col border border-black p-5 bg-[#EEEEF0] gap-5 w-full h-full">
+            <div className="flex flex-col border border-black p-5 bg-fora-gray100 gap-5 w-full h-full">
                 <div className="flex gap-5 md:gap-0 flex-col md:flex-row justify-between p-5 bg-white rounded-[16px]">
                     <div className="flex items-center gap-2 text-[12px] md:text-[14px]">
                         <h1 className={`text-black font-[600]`}>Program</h1>
@@ -187,8 +187,8 @@ const CalendarPage = ({ sessions, events }: Props) => {
                         objectFit="fill"
                         alt="event-image"
                         style={{ borderRadius: "18px" }}
-                        width="600px"
-                        height="345px"
+                        width="600"
+                        height="345"
                     />
                 </div>
                 <div className="hidden md:flex h-full w-full items-center justify-center rounded-[8px]">
@@ -197,8 +197,8 @@ const CalendarPage = ({ sessions, events }: Props) => {
                         objectFit="fill"
                         alt="event-image"
                         style={{ borderRadius: "18px" }}
-                        width="1900px"
-                        height="245px"
+                        width="1900"
+                        height="245"
                     />
                 </div>
                 <div className="flex flex-col items-center pt-[16px] md:px-[32px] px-[18px] pb-[40px] bg-white gap-[8px] rounded-[16px]">
@@ -231,7 +231,7 @@ const CalendarPage = ({ sessions, events }: Props) => {
                                     className="flex justify-between uppercase bg-white border border-primary text-zulalu-primary font-[600] py-[8px] px-[16px] gap-[8px] text-[16px] rounded-[8px] flex flex-row justify-center items-center"
                                 >
                                     <p>Location</p>
-                                    <NextImage src={"/arrow-down.svg"} width={8} height={4} />
+                                    <NextImage alt={"Arrow Down Icon"} src={"/arrow-down.svg"} width={8} height={4} />
                                 </button>
 
                                 {openLocationFilter && (
@@ -269,7 +269,7 @@ const CalendarPage = ({ sessions, events }: Props) => {
                                     className="flex justify-between uppercase bg-white border border-primary text-zulalu-primary font-[600] py-[8px] px-[16px] gap-[8px] text-[16px] rounded-[8px] flex flex-row justify-center items-center"
                                 >
                                     <p>{datePickerDescription}</p>
-                                    <NextImage src="/arrow-down.svg" width={8} height={4} />
+                                    <NextImage alt={"Arrow down icon"} src="/arrow-down.svg" width={8} height={4} />
                                 </button>
 
                                 {openDatePicker && (
