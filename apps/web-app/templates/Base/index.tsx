@@ -3,7 +3,7 @@ import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import { sites } from "../../data/sites"
 
-const BaseTemplate = ({ sitedata, children }: { sitedata: (typeof sites)["vitalia"] }) => (
+const BaseTemplate = ({ sitedata, children }: { sitedata: (typeof sites)["vitalia"]; children: any }) => (
     <div className="flex flex-col min-h-screen bg-fora-gray100">
         <div className="z-20">
             <header>

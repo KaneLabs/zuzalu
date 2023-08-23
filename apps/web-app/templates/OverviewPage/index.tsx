@@ -8,7 +8,8 @@ type Props = {
 const OverviewPage = ({ sessions }: Props) => {
 
     return (
-        <BaseTemplate>
+        // @ts-ignore
+<BaseTemplate>
                 <div className="flex flex-col min-h-[100vh] bg-fora-gray100 p-5 gap-10">
                     <h1 className="font-normal text-[32px] md:text-[52px]">Organizers Overview</h1>
                     <div className="overflow-scroll">

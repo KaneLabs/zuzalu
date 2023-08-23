@@ -34,7 +34,7 @@ const HomeTemplate = ({ sessions, events, sitedata }: Props) => {
                 {!userInfo ? (
                     <>
                         <MainSection sitedata={sitedata} />
-                        <Events events={events} />
+                        <Events events={events}  sitedata={sitedata} />
                     </>
                 ) : (
                     <>

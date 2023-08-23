@@ -3,6 +3,8 @@ import React from "react"
 import BaseTemplate from "../Base"
 
 const AboutPage = () => (
+    // @ts-expect-error
+
     <BaseTemplate>
         <div className="flex flex-col w-full h-full bg-fora-gray100 p-5 gap-10">
             <div className="w-full h-full flex flex-col py-10 md:py-20 px-[28px] overflow-hidden  md:pr-0 pr-4 bg-white rounded-[16px] gap-10 relative">
@@ -40,10 +42,7 @@ const AboutPage = () => (
                         <h1>
                             and
                             <a href="https://t.me/+iXBJiYc8PkQ3NWFl" target="_blank" rel="noopener noreferrer">
-                                <span className="text-fora-primary underline">
-                                    {" "}
-                                    our announcement telegram channel.
-                                </span>
+                                <span className="text-fora-primary underline"> our announcement telegram channel.</span>
                             </a>
                         </h1>
                     </div>

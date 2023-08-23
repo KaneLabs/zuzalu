@@ -61,7 +61,7 @@ const Events = ({ events, sitedata }: Props) => {
             <div className="flex flex-col md:flex-row md:gap-0 gap-5  w-full justify-between items-start">
                 <div className="flexflex-col md:w-3/6 w-full text-fora-gray50">
                     <h6 className="tracking-[0.3em] font-semibold text-fora-gray400 uppercase">Events</h6>
-                    <p className="tracking-[0.2em] font-medium text-lg text-gray600 mt-[0.2rem]">January 6th to March 1st, 2024</p>
+                    <p className="tracking-[0.2em] font-semibold text-lg text-gray600 mt-[0.2rem]">January 6th to March 1st, 2024</p>
                     <h3 className="font-light font-serif text-3xl md:text-4xl tracking-wide mt-[2rem]">
                         Renegade life scientists, biotechnology engineers and an entrepreneurially driven community of
                         people that care.

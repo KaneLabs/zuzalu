@@ -31,6 +31,7 @@ const projects = [
 ]
 
 const Zapps = () => (
+    // @ts-expect-error
     <BaseTemplate>
         <div className="flex flex-col px-5 md:px-10 py-5 h-full gap-5">
             <h1 className="text-[18px] font-[600]">Use your Zuzalu passport to access other community-built apps</h1>

@@ -118,9 +118,7 @@ const Header = ({ sitedata }: { sitedata: (typeof sites)["vitalia"] }) => {
                     ) : null}
                 </ul>
                 <div>
-                    <ConnectPassportButton>
-                        Connect Passport
-                        </ConnectPassportButton>
+                    <ConnectPassportButton>Connect Passport</ConnectPassportButton>
                 </div>
                 <div className="md:hidden">
                     <button

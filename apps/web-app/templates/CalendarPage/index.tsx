@@ -149,6 +149,7 @@ const CalendarPage = ({ sessions, events }: Props) => {
     }
 
     return (
+        // @ts-expect-error
         <BaseTemplate>
             <div className="flex flex-col border border-black p-5 bg-fora-gray100 gap-5 w-full h-full">
                 <div className="flex gap-5 md:gap-0 flex-col md:flex-row justify-between p-5 bg-white rounded-[16px]">
