@@ -18,9 +18,6 @@ export default function Index(props: { site: string; data: string }) {
 
     console.log("site: ", props.site)
 
-    const data = JSON.parse(props.data)
-    console.log("data: ", data)
-
     return (
         <Layout meta={sites.vitalia} subdomain={props.site}>
             <HomeTemplate sessions={[]} events={[]} sitedata={sites.vitalia} />
