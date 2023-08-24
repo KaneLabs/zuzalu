@@ -15,11 +15,7 @@ export default function Index(props: { site: string; data: string }) {
     if (router.isFallback) {
         return null
     }
-
     console.log("site: ", props.site)
-
-    const data = JSON.parse(props.data)
-    console.log("data: ", data)
 
     return (
         <Layout meta={sites.vitalia} subdomain={props.site}>
@@ -30,7 +26,7 @@ export default function Index(props: { site: string; data: string }) {
 
 const domain =
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-        ? "https://www.fora.co"
+        ? "https://www.vitalia.tripsha.com"
         : "http://localhost:3000"
 
 export async function getStaticPaths() {
@@ -50,7 +46,7 @@ export async function getStaticPaths() {
     //     },
     //   });
 
-    const allSubdomains = Object.entries(sites).map(([_, sitedata]) => sitedata.subdomain)
+    const allSubdomains = Object.values(sites).map((sitedata) => sitedata.subdomain)
     const allPaths = [
         ...allSubdomains
         // ...customDomains.map((customDomain) => {

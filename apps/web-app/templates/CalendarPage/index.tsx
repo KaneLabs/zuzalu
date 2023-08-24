@@ -9,6 +9,7 @@ import CalendarSessionModal from "../../components/CalendarSessionModal"
 import { useUserAuthenticationContext } from "../../context/UserAuthenticationContext"
 import StyledDatePicker from "../../components/StyledDatePicker"
 import ContactModal from "../../components/ContactModal"
+import { sites } from "../../data/sites"
 
 type Props = {
     sessions: SessionsDTO[]
@@ -149,8 +150,7 @@ const CalendarPage = ({ sessions, events }: Props) => {
     }
 
     return (
-        // @ts-expect-error
-        <BaseTemplate>
+        <BaseTemplate sitedata={sites.vitalia}>
             <div className="flex flex-col border border-black p-5 bg-fora-gray100 gap-5 w-full h-full">
                 <div className="flex gap-5 md:gap-0 flex-col md:flex-row justify-between p-5 bg-white rounded-[16px]">
                     <div className="flex items-center gap-2 text-[12px] md:text-[14px]">
