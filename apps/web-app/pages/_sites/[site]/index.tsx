@@ -50,7 +50,7 @@ export async function getStaticPaths() {
     //     },
     //   });
 
-    const allSubdomains = Object.entries(sites).map(([_, sitedata]) => sitedata.subdomain)
+    const allSubdomains = Object.values(sites).map((sitedata) => sitedata.subdomain)
     const allPaths = [
         ...allSubdomains
         // ...customDomains.map((customDomain) => {
