@@ -30,8 +30,11 @@ export default function middleware(req: NextRequest) {
             // return NextResponse.rewrite(`http://localhost:3000`)
             return
         }
+        if (hostname === currentHost) {
+            return
+        }
         const url = req.nextUrl.clone()
-        url.pathname = `/_sites/${currentHost}${pathname}`;
+        url.pathname = `/_sites/${currentHost}${pathname}`
         return NextResponse.rewrite(url)
     }
 }
