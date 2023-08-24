@@ -15,7 +15,6 @@ export default function Index(props: { site: string; data: string }) {
     if (router.isFallback) {
         return null
     }
-
     console.log("site: ", props.site)
 
     return (
