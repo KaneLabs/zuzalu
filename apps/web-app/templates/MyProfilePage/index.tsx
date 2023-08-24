@@ -9,6 +9,7 @@ import CalendarSessionModal from "../../components/CalendarSessionModal"
 import { EventsDTO, SessionsDTO } from "../../types"
 import CreateProfileModal from "../../components/CreateProfileModal"
 import EditProfileModal from "../../components/EditProfileModal"
+import { sites } from "../../data/sites"
 
 const supabase = createBrowserSupabaseClient()
 
@@ -82,8 +83,7 @@ const MyProfilePage = ({ events, sessions }: Props) => {
             ? sortByDate.filter((item) => selectedOpt.includes(item.events.name.replace("\n", "")))
             : sortByDate
     return (
-        // @ts-ignore
-<BaseTemplate>
+<BaseTemplate sitedata={sites.vitalia}>
             <div className="flex flex-col bg-fora-gray100 px-4 md:px-[24px] py-4 md:py-[24px] gap-4 md:gap-[16px]">
                 {profile ? (
                     <div className="flex md:hidden flex-col items-start gap-[8px] bg-white w-full rounded-[16px]">

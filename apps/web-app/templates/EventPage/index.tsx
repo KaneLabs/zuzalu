@@ -11,6 +11,7 @@ import { EventsDTO, SessionsDTO } from "../../types"
 import BaseTemplate from "../Base"
 import { useUserAuthenticationContext } from "../../context/UserAuthenticationContext"
 import StyledDatePicker from "../../components/StyledDatePicker"
+import { sites } from '../../data/sites';
 
 type Props = {
     event: EventsDTO
@@ -174,8 +175,7 @@ const EventPage = ({ event, sessions, allSessions }: Props) => {
     }
 
     return (
-        // @ts-ignore
-<BaseTemplate>
+        <BaseTemplate sitedata={sites.vitalia}>
             <div className="flex flex-col p-5 bg-fora-gray100 gap-5 w-full h-full">
                 <div className="flex flex-col md:flex-row justify-between p-5 bg-white rounded-[16px]">
                     <div className="flex items-center gap-2 mb-5 md:mb-0 text-[12px] md:text-[14px]">

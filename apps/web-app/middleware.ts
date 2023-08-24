@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from "next/server"
 
 export default function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl // get pathname of request (e.g. /blog-slug)
-    const hostname = req.headers.get("host") as string // get hostname of request (e.g. demo.fora.co)
+    const hostname = req.headers.get("host") as string // get hostname of request (e.g. demovitalia.tripsha.com)
 
     console.log("hostname: ", hostname)
 
     const currentHost =
         process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-            ? hostname.replace(`.fora.co`, "")
+            ? hostname.replace(`vitalia.tripsha.com`, "")
             : hostname.replace(`.localhost:3000`, "")
 
     if (pathname.startsWith(`/_sites`)) {
