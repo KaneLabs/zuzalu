@@ -14,11 +14,6 @@ module.exports = withPWA({
             },
             {
                 protocol: "https",
-                hostname: "www.vitalia.tripsha.com",
-                port: ""
-            },
-            {
-                protocol: "https",
                 hostname: "vitalia.tripsha.com",
                 port: ""
             },
