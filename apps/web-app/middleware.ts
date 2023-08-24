@@ -15,7 +15,7 @@ export default function middleware(req: NextRequest) {
 
     if (pathname.startsWith(`/_sites`)) {
         console.info("_sites 404")
-        return new Response(null, { status: 404 })
+        // return new Response(null, { status: 404 })
     }
 
     if (!pathname.includes(".") && !pathname.startsWith("/api")) {
