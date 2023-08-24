@@ -82,7 +82,8 @@ const SessionPage = ({ session, sessions, userId, events }: Props) => {
     const reactContent = parser.parse(session.description)
 
     return (
-        <BaseTemplate>
+        // @ts-ignore
+<BaseTemplate>
             <div className="flex flex-col items-center bg-fora-gray100 h-full px-4 md:px-[24px] py-4 md:py-[24px] gap-4 md:gap-[16px]">
                 <div className="flex flex-col md:flex-row justify-between p-5 bg-white w-full rounded-[16px]">
                     <div className="flex md:w-3/6 w-full items-center gap-2 mb-4 md:mb-0 text-[12px] md:text-[14px]">
@@ -102,7 +103,7 @@ const SessionPage = ({ session, sessions, userId, events }: Props) => {
                         <ParticipateButton session={session} isTallButton={true} />
 
                         <button
-                            className={`flex w-full md:w-auto justify-center gap-2 items-center bg-zulalu-primary border border-primary text-white font-[600] py-[8px] px-[16px] rounded-[8px]`}
+                            className={`flex w-full md:w-auto justify-center gap-2 items-center bg-fora-primary border border-primary text-white font-[600] py-[8px] px-[16px] rounded-[8px]`}
                             onClick={() => setOpenEditSessionModal(true)}
                         >
                             <NextImage alt={"Edit Session Icon"} src={"/pencil.svg"} width={12} height={16} />
@@ -117,7 +118,7 @@ const SessionPage = ({ session, sessions, userId, events }: Props) => {
                         />
                         {checkOrganizerOrCreator && (
                             <button
-                                className={`flex w-full md:w-auto justify-center gap-2 items-center bg-zulalu-primary border border-primary text-white font-[600] py-[8px] px-[16px] rounded-[8px]`}
+                                className={`flex w-full md:w-auto justify-center gap-2 items-center bg-fora-primary border border-primary text-white font-[600] py-[8px] px-[16px] rounded-[8px]`}
                                 onClick={() => setOpenDeleteSessionModal(true)}
                             >
                                 DELETE SESSION
@@ -125,7 +126,7 @@ const SessionPage = ({ session, sessions, userId, events }: Props) => {
                         )}
 
                         <button
-                            className={`w-full md:w-auto justify-center items-center bg-zulalu-primary border border-primary text-white font-[600] py-[8px] px-[16px] rounded-[8px]`}
+                            className={`w-full md:w-auto justify-center items-center bg-fora-primary border border-primary text-white font-[600] py-[8px] px-[16px] rounded-[8px]`}
                             onClick={() =>
                                 window.open(
                                     `https://zuzalu-feedback.appliedzkp.org/session/${session.id}/new`,
@@ -152,24 +153,24 @@ const SessionPage = ({ session, sessions, userId, events }: Props) => {
                         <div className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-0 md:gap-[24px]">
                             <div className="flex gap-1 items-center justify-start mt-4">
                                 <NextImage src={"/vector-calendar.svg"} alt="calendar" width={15} height={15} />
-                                <h1 className="text-zulalu-secondary">
+                                <h1 className="text-fora-secondary">
                                     {moment(displayDateWithoutTimezone(startDate)).format("dddd, MMMM Do")}
                                 </h1>
                             </div>
                             <div className="flex gap-1 items-center justify-start mt-4">
                                 <NextImage src={"/vector-clock.svg"} alt="calendar" width={15} height={15} />
-                                <h1 className="text-zulalu-secondary">{`${startTime} - ${end_time}`}</h1>
+                                <h1 className="text-fora-secondary">{`${startTime} - ${end_time}`}</h1>
                             </div>
                             <div className="flex gap-1 items-center justify-start mt-4">
                                 <NextImage src={"/vector-location.svg"} alt="calendar" width={15} height={15} />
-                                <h1 className="text-zulalu-secondary">
+                                <h1 className="text-fora-secondary">
                                     {location === "Other" ? custom_location : location}
                                 </h1>
                             </div>
                             {checkOrganizerOrCreator && (
                                 <div className="flex gap-1 items-center justify-start mt-4">
                                     <NextImage src={"/info.svg"} alt="RSVP capacity" width={15} height={15} />
-                                    <h1 className="text-zulalu-secondary">
+                                    <h1 className="text-fora-secondary">
                                         {session.totalParticipants} /{" "}
                                         {session.capacity ? session.capacity : "UNLIMITED"} RSVPs
                                     </h1>

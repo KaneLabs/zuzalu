@@ -1,9 +1,10 @@
 import React from "react"
 
 import BaseTemplate from "../Base"
+import { sites } from "../../data/sites"
 
 const AboutPage = () => (
-    <BaseTemplate>
+    <BaseTemplate sitedata={sites.vitalia}>
         <div className="flex flex-col w-full h-full bg-fora-gray100 p-5 gap-10">
             <div className="w-full h-full flex flex-col py-10 md:py-20 px-[28px] overflow-hidden  md:pr-0 pr-4 bg-white rounded-[16px] gap-10 relative">
                 <h1 className="text-[32px] md:text-[52px] font-[600] w-full md:w-[700px] pl-0 md:pl-10 z-[10]">
@@ -35,15 +36,12 @@ const AboutPage = () => (
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <span className="text-zulalu-primary underline">Check out our notion</span>
+                            <span className="text-fora-primary underline">Check out our notion</span>
                         </a>
                         <h1>
                             and
                             <a href="https://t.me/+iXBJiYc8PkQ3NWFl" target="_blank" rel="noopener noreferrer">
-                                <span className="text-zulalu-primary underline">
-                                    {" "}
-                                    our announcement telegram channel.
-                                </span>
+                                <span className="text-fora-primary underline"> our announcement telegram channel.</span>
                             </a>
                         </h1>
                     </div>

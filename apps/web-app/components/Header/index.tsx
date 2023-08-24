@@ -2,13 +2,15 @@ import { useEffect, useState } from "react"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import { useRouter } from "next/router"
-import { FiArrowUpRight } from "react-icons/fi"
+import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi"
 
 import { useUserAuthenticationContext } from "../../context/UserAuthenticationContext"
 import { useUserPassportContext } from "../../context/UserPassportContext"
 import PassportLoadingModal from "../PassportLoadingModal"
+import { sites } from "../../data/sites"
+import ConnectPassportButton from "../ConnectPassportButton"
 
-const Header = () => {
+const Header = ({ sitedata }: { sitedata: (typeof sites)["vitalia"] }) => {
     const { userInfo } = useUserAuthenticationContext()
 
     const { requestSignedZuID, loadingPassport, errorPassport } = useUserPassportContext()
@@ -18,62 +20,37 @@ const Header = () => {
     const router = useRouter()
 
     return (
-        <div className="relative px-[24px] md:px-[82px] flex flex-row h-[112px] md:justify-between w-full z-10 bg-zulalu-darkBase items-center">
+        <div className="relative px-[24px] md:px-[82px] flex flex-row h-[112px] md:justify-between w-full z-10 bg-fora-gray100 items-center">
             {!userInfo && loadingPassport.step !== 0 && (
                 <PassportLoadingModal loadingPassport={loadingPassport} errorPassport={errorPassport} />
             )}
             <div className="w-full flex relative justify-between md:justify-start overflow-hidden gap-5 items-center">
-                <NextLink href={"/"}>
+                {/* <NextLink href={"/"}>
                     <div className="hidden md:flex cursor-pointer gap-2 items-center justify-center ">
-                        <NextImage
-                            src={
-                                "https://polcxtixgqxfuvrqgthn.supabase.co/storage/v1/object/public/zulalu-images/zulalologo.png"
-                            }
-                            alt="Zuzalu City Logo"
-                            objectFit="contain"
-                            width={200}
-                            height={50}
-                        />
+                        <div className="h-14 w-14">
+                            <img src={sitedata.logo} alt="Zuzalu City Logo" height={50} />
+                        </div>
                     </div>
-                </NextLink>
+                </NextLink> */}
                 <NextLink href={"/"}>
-                    <div className="md:hidden flex cursor-pointer gap-2 items-center justify-center ">
-                        <NextImage alt="Zuzalu City Logo - Small" src={"/logo-small.png"} objectFit="contain" width={50} height={50} />
+                    <div className="flex cursor-pointer items-center justify-center h-14 w-14 lg:h-16 lg:w-16">
+                        <div className="p-2 lg:p-0">
+                            <img src={sitedata.logo} alt={`${sitedata.name} logo`} />
+                        </div>
                     </div>
                 </NextLink>
 
                 {userInfo && (
-                    <div className="flex gap-2 text-[#B1F9CA] justify-center items-center text-white text-[18px] text-center self-center">
-                        <div className="w-[8px] h-[8px] bg-[#B1F9CA] rounded-full" />
-                        <h1 className="text-[#B1F9CA] text-[18px] font-[400]">Passport Connected</h1>
+                    <div className="flex gap-2 text-fora-primary justify-center items-center text-[18px] text-center self-center">
+                        <div className="w-[8px] h-[8px] bg-fora-gray900 rounded-full" />
+                        <h1 className="text-fora-primary text-[18px] font-[400]">Passport Connected</h1>
                     </div>
                 )}
-                {!userInfo && (
-                    <div className="flex flex-row -center">
-                        <button
-                            className={`flex md:hidden bg-zulalu-primary text-white py-[8px] px-[16px] rounded-[8px]`}
-                            onClick={requestSignedZuID}
-                        >
-                            Connect Passport
-                        </button>
-                    </div>
-                )}
-                <div className="md:hidden">
-                    <button
-                        className="p-2 text-white rounded-md outline-none focus:border-gray-400 focus:border"
-                        onClick={() => setNavbar(!navbar)}
-                    >
-                        {navbar ? (
-                            <NextImage alt={"Close icon"} src={"/close.png"} width={32} height={32} />
-                        ) : (
-                            <NextImage alt={"Menu icon"} src={"/hamburger.png"} width={22} height={18} />
-                        )}
-                    </button>
-                </div>
+
                 <ul className="hidden md:flex flex-row gap-5 md:ml-auto items-center text-white">
                     <NextLink href={"/about"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/about" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -82,7 +59,7 @@ const Header = () => {
                     </NextLink>
                     <NextLink href={"/full-program"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/events" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -91,7 +68,7 @@ const Header = () => {
                     </NextLink>
                     <NextLink href={"/faq"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/faq" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -100,7 +77,7 @@ const Header = () => {
                     </NextLink>
                     <a href={"https://zupass.org/"} target="_blank">
                         <li
-                            className={`flex items-center gap-2 cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`flex items-center gap-2 cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/faq" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -109,7 +86,7 @@ const Header = () => {
                     </a>
                     <a href={"https://zuzalu.streameth.org/"} target="_blank">
                         <li
-                            className={`flex items-center gap-2 cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`flex items-center gap-2 cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/faq" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -118,7 +95,7 @@ const Header = () => {
                     </a>
                     <NextLink href={"/zapps"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/zapps" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -127,39 +104,41 @@ const Header = () => {
                     </NextLink>
                     {!userInfo && (
                         <a href="https://airtable.com/shrRZrZbozPE2g6HH" target="_blank" rel="noopener noreferrer">
-                            <li className="cursor-pointer font-[400] text-[18px] text-[#F8FFFE]">Apply Now</li>
+                            <li className="cursor-pointer font-[400] text-[18px] text-fora-gray900">Apply Now</li>
                         </a>
                     )}
                     {userInfo ? (
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/myprofile" ? "font-[700]" : "font-[400]"
                             }`}
                         >
                             <NextLink href="/myprofile">My Profile</NextLink>
                         </li>
-                    ) : (
-                        <li>
-                            <button
-                                className="bg-zulalu-primary text-white py-[8px] px-[16px] rounded-[8px]"
-                                onClick={requestSignedZuID}
-                            >
-                                Connect Passport
-                            </button>
-                        </li>
-                    )}
+                    ) : null}
                 </ul>
+                <div>
+                    <ConnectPassportButton>Connect Passport</ConnectPassportButton>
+                </div>
+                <div className="md:hidden">
+                    <button
+                        className="p-3 text-fora-gray800 rounded-md outline-none focus:border-gray-400 focus:border "
+                        onClick={() => setNavbar(!navbar)}
+                    >
+                        {navbar ? <FiX fontSize={32} /> : <FiMenu fontSize={32} />}
+                    </button>
+                </div>
             </div>
             {/* Add the responsive dropdown menu */}
             <div
                 className={`${
                     navbar ? "block" : "hidden"
-                } md:hidden absolute left-0 top-full mt-0 bg-zulalu-darkBase w-full flex flex-row items-start pt-[16px] pb-[32px] gap-[8px] px-[32px] space-x-2`}
+                } md:hidden absolute left-0 top-full mt-0 bg-fora-gray900 w-full flex flex-row items-start pt-[16px] pb-[32px] gap-[8px] px-[32px] space-x-2`}
             >
                 <ul className="flex flex-col pt-[16px] pb-[32px] w-full gap-[32px] text-f8fffe text-lg uppercase">
                     <NextLink href={"/about"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/about" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -168,7 +147,7 @@ const Header = () => {
                     </NextLink>
                     <NextLink href={"/full-program"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/events" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -177,7 +156,7 @@ const Header = () => {
                     </NextLink>
                     <NextLink href={"/faq"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/faq" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -186,7 +165,7 @@ const Header = () => {
                     </NextLink>
                     <a href={"https://zuzalu.streameth.org/"} target="_blank">
                         <li
-                            className={`flex items-center gap-2 cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`flex items-center gap-2 cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/faq" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -196,7 +175,7 @@ const Header = () => {
                     </a>
                     <NextLink href={"/zapps"}>
                         <li
-                            className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/zapps" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -205,7 +184,7 @@ const Header = () => {
                     </NextLink>
                     <a href={"https://zupass.org/"} target="_blank">
                         <li
-                            className={`flex items-center gap-2 cursor-pointer text-[#F8FFFE] text-[18px] ${
+                            className={`flex items-center gap-2 cursor-pointer text-fora-gray900 text-[18px] ${
                                 router.asPath === "/faq" ? "font-[700]" : "font-[400]"
                             }`}
                         >
@@ -215,12 +194,12 @@ const Header = () => {
                     </a>
                     {!userInfo ? (
                         <a href="https://airtable.com/shrRZrZbozPE2g6HH" target="_blank" rel="noopener noreferrer">
-                            <li className="cursor-pointer font-[400] text-[18px] text-[#F8FFFE]">Apply Now</li>
+                            <li className="cursor-pointer font-[400] text-[18px] text-fora-gray900">Apply Now</li>
                         </a>
                     ) : (
                         <NextLink href={"/myprofile"}>
                             <li
-                                className={`cursor-pointer text-[#F8FFFE] text-[18px] ${
+                                className={`cursor-pointer text-fora-gray900 text-[18px] ${
                                     router.asPath === "/myprofile" ? "font-[700]" : "font-[400]"
                                 }`}
                             >
@@ -228,9 +207,9 @@ const Header = () => {
                             </li>
                         </NextLink>
                     )}
-                    <div className="w-full h-[1px] bg-zulalu-primary" />
+                    <div className="w-full h-[1px] bg-fora-primary" />
                     <li
-                        className={`capitalize text-[#F8FFFE] text-[18px] ${
+                        className={`capitalize text-fora-gray900 text-[18px] ${
                             router.asPath === "/faq" ? "font-[700]" : "font-[400]"
                         }`}
                     >

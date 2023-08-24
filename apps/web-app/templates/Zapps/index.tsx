@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react"
 import NextImage from "next/image"
 import { AiOutlineArrowRight } from "react-icons/ai"
 import BaseTemplate from "../Base"
+import { sites } from "../../data/sites"
 
 const projects = [
     {
@@ -31,7 +32,7 @@ const projects = [
 ]
 
 const Zapps = () => (
-    <BaseTemplate>
+    <BaseTemplate sitedata={sites.vitalia}>
         <div className="flex flex-col px-5 md:px-10 py-5 h-full gap-5">
             <h1 className="text-[18px] font-[600]">Use your Zuzalu passport to access other community-built apps</h1>
             <div className="flex flex-row gap-5 text-[14px]">

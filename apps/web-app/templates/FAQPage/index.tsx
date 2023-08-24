@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react"
 import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react"
 import BaseTemplate from "../Base"
+import { sites } from "../../data/sites"
 
 import { logistics, health, participation } from "../../data/faqQuestionsAnswers"
 
@@ -21,7 +22,7 @@ const FAQPage = () => {
     }
 
     return (
-        <BaseTemplate>
+        <BaseTemplate sitedata={sites.vitalia}>
             <Fragment>
                 <div className="flex flex-col border border-black p-5 bg-fora-gray100 gap-5 w-full h-full">
                     <div className="flex gap-5 flex-col p-5 md:p-10 bg-white rounded-[16px]">

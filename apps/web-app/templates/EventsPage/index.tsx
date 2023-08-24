@@ -1,12 +1,14 @@
 import BaseTemplate from "../Base"
 import { EventsDTO } from "../../types"
 import Events from "../../components/Events"
+import { sites } from "../../data/sites"
 
 type Props = {
     events: EventsDTO[]
 }
 
 const EventsPage = ({ events }: Props) => (
+    // @ts-expect-error
     <BaseTemplate>
         <div className="flex flex-col min-h-[100vh] bg-fora-gray100 p-5 gap-10">
             <div className="overflow-hidden w-full h-full flex justify-between lg:flex-row flex-col py-5  px-[28px] md:px-[48px] bg-white rounded-[16px] gap-[100px] lg:gap-10">
@@ -31,7 +33,7 @@ const EventsPage = ({ events }: Props) => (
                     <div className="top-0 absolute z-[21] w-full h-full bg-contain bg-center bg-no-repeat bg-[url('/49.png')]" />
                 </div>
             </div>
-            <Events events={events} />
+            <Events events={events} sitedata={sites.vitalia} />
         </div>
     </BaseTemplate>
 )
