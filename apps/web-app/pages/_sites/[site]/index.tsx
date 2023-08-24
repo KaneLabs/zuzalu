@@ -30,7 +30,7 @@ export default function Index(props: { site: string; data: string }) {
 
 const domain =
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-        ? "https://www.fora.co"
+        ? "https://www.vitalia.tripsha.com"
         : "http://localhost:3000"
 
 export async function getStaticPaths() {
