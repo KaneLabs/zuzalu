@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from "next/server"
 
 export default function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl // get pathname of request (e.g. /blog-slug)
-    const hostname = req.headers.get("host") as string // get hostname of request (e.g. vitalia.tripsha.com)
+    const hostname = req.headers.get("host") as string // get hostname of request (e.g. demovitalia.tripsha.com)
 
-    console.info("hostname: ", hostname)
+    console.log("hostname: ", hostname);
 
     const currentHost =
         process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-            ? hostname.replace(`.vitalia.tripsha.com`, "")
+            ? hostname.replace(`vitalia.tripsha.com`, "")
             : hostname.replace(`.localhost:3000`, "")
 
     console.info("currentHost: ", currentHost)
@@ -31,6 +31,9 @@ export default function middleware(req: NextRequest) {
         }
         if (hostname === "localhost:3000") {
             // return NextResponse.rewrite(`http://localhost:3000`)
+            return
+        }
+        if (hostname === currentHost) {
             return
         }
         const url = req.nextUrl.clone()
