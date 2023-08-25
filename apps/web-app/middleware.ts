@@ -11,8 +11,11 @@ export default function middleware(req: NextRequest) {
             ? hostname.replace(`vitalia.tripsha.com`, "")
             : hostname.replace(`.localhost:3000`, "")
 
+    console.info("currentHost: ", currentHost)
+
     if (pathname.startsWith(`/_sites`)) {
-        return new Response(null, { status: 404 })
+        console.info("_sites 404")
+        // return new Response(null, { status: 404 })
     }
 
     if (!pathname.includes(".") && !pathname.startsWith("/api")) {

@@ -18,16 +18,6 @@ module.exports = withPWA({
                 port: ""
             },
             {
-                protocol: "https",
-                hostname: "www.fora.co",
-                port: ""
-            },
-            {
-                protocol: "https",
-                hostname: "fora.co",
-                port: ""
-            },
-            {
                 protocol: "http",
                 hostname: "localhost",
                 port: "3000"
