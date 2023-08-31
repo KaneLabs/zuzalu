@@ -1,37 +1,20 @@
 // import * as THREE from "three"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 // import { Canvas, useFrame, ThreeElements } from "@react-three/fiber"
 import Globe from "react-globe.gl"
+import countries from "./countries.geo.json"
+import cities from "./cities.json"
+
 
 const World = () => {
-    const [volcanoes, setVolcanoes] = useState([])
-    const [countries, setCountries] = useState({ features: [] })
     const globeRef = useRef()
 
     useEffect(() => {
-        // load data
-        fetch("/img/world_volcanoes.json")
-            .then((res) => res.json())
-            .then(setVolcanoes)
-
-        fetch("/countries.geo.json")
-            .then((res) => res.json())
-            .then(setCountries)
-    }, [])
-
-    useEffect(() => {
-        console.log(globeRef.current.controls())
         let globeControls = globeRef.current.controls()
         globeControls.autoRotate = true
         globeControls.autoRotateSpeed = 0.3
-        // globeRef.current.
-    }, [])
-
-    useEffect(() => {
         globeRef.current.pointOfView({ lat: 30, lng: 10, altitude: 2 })
     }, [])
-
-    // const catColor = d3.scaleOrdinal(d3.schemeCategory10.map((col) => transparentize(0.2, col)))
 
     const getAlt = (d) => d.elevation * 5e-5
 
@@ -74,7 +57,7 @@ const World = () => {
             bumpImageUrl="/img/earth-topology.png"
             waitForGlobeReady={true}
             backgroundColor="#1A1916"
-            pointsData={volcanoes}
+            pointsData={cities}
             hexPolygonsData={countries.features}
             hexPolygonResolution={3}
             hexPolygonMargin={0.7}
@@ -97,7 +80,7 @@ const World = () => {
             }}
             pointLabel={getTooltip}
             onPointClick={(point) => window.open(`https://en.wikipedia.org/wiki/${point.name}`, "_blank")}
-            labelsData={volcanoes}
+            labelsData={cities}
             labelLat="lat"
             labelLng="lon"
             labelAltitude={(d) => getAlt(d) + 1e-6}
@@ -113,17 +96,5 @@ const World = () => {
         />
     )
 }
-
-// const Tooltip = ({ city }) => {
-//     return (
-//         <div className="bg-fora-primary">
-//             <div>
-//                 <b>{city.name}</b>, {city.country}
-//             </div>
-//             <div>({city.type})</div>
-//             <div>Elevation: <em>{city.elevation}</em>m</div>
-//         </div>
-//     )
-// }
 
 export default World

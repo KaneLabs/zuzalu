@@ -12,7 +12,7 @@ const LandingPage = () => {
     return (
         <div className="min-w-screen min-h-screen bg-fora-gray950 flex flex-col md:flex-row">
             <div className="flex flex-col justify-center items-start p-10 w-full md:w-1/2">
-                <h1 className="text-5xl font-light mb-4 text-fora-gray100 font-serif">Radically Sovereign People</h1>
+                <h1 className="text-6xl font-light mb-4 text-fora-gray100 font-serif">Radical Sovereignty</h1>
                 <h2 className="text-2xl mb-8 text-brand-h4 text-fora-gray100">Fora is the leading platform for starting and managing new cities.</h2>
                 <form onSubmit={onSubmit} className="w-full md:w-2/3 mb-8">
                     <div className="bg-gradient-to-r from-fora-gray200 to-fora-primary p-0.5 rounded flex items-center">
