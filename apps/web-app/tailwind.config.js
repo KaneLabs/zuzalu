@@ -76,6 +76,7 @@ module.exports = {
                     gray700: "#59544C",
                     gray800: "#433F39",
                     gray900: "#2C2A26",
+                    gray950: "#1A1916",
                 }
             },
             filter: {

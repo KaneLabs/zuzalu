@@ -1,10 +1,10 @@
-const withPWA = require("next-pwa")({
-    dest: "public",
-    register: true,
-    skipWaiting: true
-})
+// const withPWA = require("next-pwa")({
+//     dest: "public",
+//     register: true,
+//     skipWaiting: true
+// })
 
-module.exports = withPWA({
+module.exports = ({
     images: {
         remotePatterns: [
             {
@@ -14,7 +14,7 @@ module.exports = withPWA({
             },
             {
                 protocol: "https",
-                hostname: "vitalia.tripsha.com",
+                hostname: "vitalia.fora.co",
                 port: ""
             },
             {
@@ -31,7 +31,7 @@ module.exports = withPWA({
                 protocol: "https",
                 hostname: "polcxtixgqxfuvrqgthn.supabase.co",
                 port: ""
-            }
+            },
             
         ]
     },

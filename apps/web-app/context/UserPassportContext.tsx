@@ -2,7 +2,6 @@ import { useRouter } from "next/router"
 import { createContext, ReactNode, useState, useContext, useEffect } from "react"
 import {
     openSignedZuzaluUUIDPopup,
-    useFetchParticipant,
     usePassportPopupMessages,
     useSemaphoreSignatureProof
 } from "@pcd/passport-interface"
@@ -67,7 +66,7 @@ export function UserPassportContextProvider({ children }: UserPassportProviderPr
         }
     }, [signatureProofValid, signatureProof])
 
-    const { participant } = useFetchParticipant(PASSPORT_SERVER_URL, uuid)
+    // const { participant } = useFetchParticipant(PASSPORT_SERVER_URL, uuid)
 
     const loginProof = async (participant1: any, signatureProofProps: any) => {
         try {
@@ -108,12 +107,12 @@ export function UserPassportContextProvider({ children }: UserPassportProviderPr
         }
     }
 
-    useEffect(() => {
-        if (participant) {
-            setLoadingPassport({ step: 3, text: "Logging you in..." })
-            loginProof(participant, signatureProof)
-        }
-    }, [participant])
+    // useEffect(() => {
+    //     if (participant) {
+    //         setLoadingPassport({ step: 3, text: "Logging you in..." })
+    //         loginProof(participant, signatureProof)
+    //     }
+    // }, [participant])
 
     return (
         <UserPassportContext.Provider value={{ requestSignedZuID, loadingPassport, errorPassport }}>

@@ -2,16 +2,17 @@ import { NextRequest, NextResponse } from "next/server"
 
 export default function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl // get pathname of request (e.g. /blog-slug)
-    const hostname = req.headers.get("host") as string // get hostname of request (e.g. demovitalia.tripsha.com)
-
+    const hostname = req.headers.get("host") as string // get hostname of request (e.g. demovitalia.fora.co)
     console.log("hostname: ", hostname);
 
     const currentHost =
         process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-            ? hostname.replace(`vitalia.tripsha.com`, "")
+            ? hostname.replace(`.fora.co`, "")
             : hostname.replace(`.localhost:3000`, "")
 
+    console.log("hostname: ", hostname);
     console.info("currentHost: ", currentHost)
+    console.info("pathname: ", pathname)
 
     if (pathname.startsWith(`/_sites`)) {
         console.info("_sites 404")
@@ -30,8 +31,7 @@ export default function middleware(req: NextRequest) {
             return NextResponse.rewrite(`/app${pathname}`)
         }
         if (hostname === "localhost:3000") {
-            // return NextResponse.rewrite(`http://localhost:3000`)
-            return
+            return NextResponse.redirect(`http://www.localhost:3000`)
         }
         if (hostname === currentHost) {
             return

@@ -7,16 +7,16 @@ import { useUserAuthenticationContext } from "../../context/UserAuthenticationCo
 import { useUserPassportContext } from "../../context/UserPassportContext"
 import CalendarPageSessions from "../../components/Sessions/CalendarPageSessions"
 import Events from "../../components/Events"
-import { sites } from "../../data/sites"
+import { SiteData } from "../../data/sites"
 
 import BaseTemplate from "../Base"
 import { SessionsDTO, EventsDTO } from "../../types"
-import ConnectPassportButton from "../../components/ConnectPassportButton"
+// import ConnectPassportButton from "../../components/ConnectPassportButton"
 
 type Props = {
     sessions: SessionsDTO[]
     events: EventsDTO[]
-    sitedata: (typeof sites)["vitalia"]
+    sitedata: SiteData
 }
 
 const HomeTemplate = ({ sessions, events, sitedata }: Props) => {
@@ -26,8 +26,8 @@ const HomeTemplate = ({ sessions, events, sitedata }: Props) => {
     return (
         <BaseTemplate sitedata={sitedata}>
             <Head>
-                <title>{sites.vitalia.title} - home</title>
-                <meta property="og:title" content={sites.vitalia.title} key="title" />
+                <title>{sitedata.title} - home</title>
+                <meta property="og:title" content={sitedata.title} key="title" />
             </Head>
 
             <div className="flex flex-col gap-10">

@@ -7,17 +7,19 @@ import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi"
 import { useUserAuthenticationContext } from "../../context/UserAuthenticationContext"
 import { useUserPassportContext } from "../../context/UserPassportContext"
 import PassportLoadingModal from "../PassportLoadingModal"
-import { sites } from "../../data/sites"
+import { SiteData, sites } from "../../data/sites"
 import ConnectPassportButton from "../ConnectPassportButton"
 
-const Header = ({ sitedata }: { sitedata: (typeof sites)["vitalia"] }) => {
+const Header = ({ sitedata }: { sitedata: SiteData }) => {
     const { userInfo } = useUserAuthenticationContext()
 
     const { requestSignedZuID, loadingPassport, errorPassport } = useUserPassportContext()
 
     const [navbar, setNavbar] = useState(false)
 
-    const router = useRouter()
+    const router = useRouter();
+
+    console.log(sitedata.logo)
 
     return (
         <div className="relative px-[24px] md:px-[82px] flex flex-row h-[112px] md:justify-between w-full z-10 bg-fora-gray100 items-center">

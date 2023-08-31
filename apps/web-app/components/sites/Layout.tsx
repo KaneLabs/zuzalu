@@ -1,16 +1,15 @@
 import Head from "next/head"
-import Link from "next/link"
-import Image from "next/image"
 import { useState, useEffect, useCallback } from "react"
+import { SiteData } from "../../data/sites"
 // import Cookies from "js-cookie"
 
 type LayoutProps = {
-    meta: any
+    siteData: SiteData
     children: any
     subdomain: string
 }
 
-export default function Layout({ meta, children, subdomain }: LayoutProps) {
+export default function Layout({ siteData, children, subdomain }: LayoutProps) {
     const [scrolled, setScrolled] = useState(false)
 
     const onScroll = useCallback(() => {
@@ -37,31 +36,31 @@ export default function Layout({ meta, children, subdomain }: LayoutProps) {
     return (
         <div>
             <Head>
-                <title>{meta?.header}</title>
-                <link rel="icon" href="/favicon.ico" />
-                <link rel="shortcut icon" type="image/x-icon" href={meta?.logo} />
-                <link rel="apple-touch-icon" sizes="180x180" href={meta?.logo} />
+                <title>{siteData?.header}</title>
+                <link rel="icon" href={siteData?.logo} />
+                <link rel="shortcut icon" type="image/x-icon" href={siteData?.logo} />
+                <link rel="apple-touch-icon" sizes="180x180" href={siteData?.logo} />
                 <meta name="theme-color" content="#7b46f6" />
 
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-                <meta itemProp="name" content={meta?.title} />
-                <meta itemProp="description" content={meta?.description} />
-                <meta itemProp="image" content={meta?.ogImage} />
-                <meta name="description" content={meta?.description} />
-                <meta property="og:title" content={meta?.title} />
-                <meta property="og:description" content={meta?.description} />
-                <meta property="og:url" content={meta?.ogUrl} />
-                <meta property="og:image" content={meta?.ogImage} />
+                <meta itemProp="name" content={siteData?.title} />
+                <meta itemProp="description" content={siteData?.description} />
+                <meta itemProp="image" content={siteData?.logo} />
+                <meta name="description" content={siteData?.description} />
+                <meta property="og:title" content={siteData?.title} />
+                <meta property="og:description" content={siteData?.description} />
+                <meta property="og:url" content={siteData?.subdomain} />
+                <meta property="og:image" content={siteData?.logo} />
                 <meta property="og:type" content="website" />
 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@Vercel" />
                 <meta name="twitter:creator" content="@StevenTey" />
-                <meta name="twitter:title" content={meta?.title} />
-                <meta name="twitter:description" content={meta?.description} />
-                <meta name="twitter:image" content={meta?.ogImage} />
+                <meta name="twitter:title" content={siteData?.title} />
+                <meta name="twitter:description" content={siteData?.description} />
+                <meta name="twitter:image" content={siteData?.logo} />
                 {subdomain !== "demo" && <meta name="robots" content="noindex" />}
             </Head>
             {/* <div
@@ -131,7 +130,7 @@ export default function Layout({ meta, children, subdomain }: LayoutProps) {
                         } flex space-y-3 sm:space-y-0 sm:space-x-3 sm:flex-row flex-col lg:w-auto w-full text-center`}
                     >
                         <a
-                            href="https://app.vitalia.tripsha.com"
+                            href="https://app.vitalia.fora.co"
                             target="_blank"
                             className="flex-auto font-cal text-lg rounded-md py-1 sm:py-3 px-5 text-black border border-gray-200 hover:border-black transition-all ease-in-out duration-150 whitespace-no-wrap"
                         >

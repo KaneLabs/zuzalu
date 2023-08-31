@@ -7,7 +7,7 @@ import { sites } from "../../data/sites"
 
 type Props = {
     events: EventsDTO[]
-    sitedata: (typeof sites)["vitalia"]
+    sitedata: SiteData
 }
 
 const Events = ({ events, sitedata }: Props) => {

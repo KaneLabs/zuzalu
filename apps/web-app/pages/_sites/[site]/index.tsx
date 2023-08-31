@@ -2,7 +2,8 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import Layout from "../../../components/sites/Layout"
 import HomeTemplate from "../../../templates/Home"
-import { sites } from "../../../data/sites"
+import { SiteData, sites } from "../../../data/sites"
+import LandingPage from '../../../templates/LandingPage'
 // import BlurImage from "@/components/BlurImage";
 // import BlogCard from "@/components/BlogCard";
 // import Loader from "@/components/sites/Loader";
@@ -15,19 +16,26 @@ export default function Index(props: { site: string; data: string }) {
     if (router.isFallback) {
         return null
     }
-    console.log("site: ", props.site)
+    const sitedata = JSON.parse(props.data) as SiteData
+    // console.log("site: ", props.site, "data: ", props.data)
+
+    if (props.site === "www") {
+        return (
+            <Layout siteData={sitedata} subdomain={props.site}>
+                <LandingPage />
+            </Layout>
+        )
+    }
 
     return (
-        <Layout meta={sites.vitalia} subdomain={props.site}>
-            <HomeTemplate sessions={[]} events={[]} sitedata={sites.vitalia} />
+        <Layout siteData={sitedata} subdomain={props.site}>
+            <HomeTemplate sessions={[]} events={[]} sitedata={sitedata} />
         </Layout>
     )
 }
 
 const domain =
-    process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-        ? "https://vitalia.tripsha.com"
-        : "http://localhost:3000"
+    process.env.NODE_ENV === "production" && process.env.VERCEL === "1" ? "https://fora.co" : "http://localhost:3000"
 
 export async function getStaticPaths() {
     //   const subdomains = await prisma.site.findMany({
@@ -86,10 +94,6 @@ export async function getStaticProps({ params: { site } }: { params: { site: str
     //   });
 
     const [data] = Object.values(sites).filter((siteEntry) => siteEntry.subdomain === site)
-    //   if (!data) {
-    //     return { notFound: true, revalidate: 10 };
-    //   }
-
     return {
         props: {
             site,

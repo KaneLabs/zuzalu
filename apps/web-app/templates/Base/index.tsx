@@ -1,9 +1,9 @@
 import { ToastContainer } from "react-toastify"
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
-import { sites } from "../../data/sites"
+import { SiteData } from "../../data/sites"
 
-const BaseTemplate = ({ sitedata, children }: { sitedata: (typeof sites)["vitalia"]; children: any }) => (
+const BaseTemplate = ({ sitedata, children }: { sitedata: SiteData; children: any }) => (
     <div className="flex flex-col min-h-screen bg-fora-gray100">
         <div className="z-20">
             <header>
