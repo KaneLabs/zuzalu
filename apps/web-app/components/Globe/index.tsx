@@ -3,22 +3,23 @@ import React, { useEffect, useRef } from "react"
 // import { Canvas, useFrame, ThreeElements } from "@react-three/fiber"
 import Globe from "react-globe.gl"
 import countries from "./countries.geo.json"
-import cities from "./cities.json"
-
+import cities, { CityData } from "./cities"
 
 const World = () => {
     const globeRef = useRef()
 
     useEffect(() => {
-        let globeControls = globeRef.current.controls()
+        // @ts-ignore
+        let globeControls = globeRef?.current.controls()
         globeControls.autoRotate = true
         globeControls.autoRotateSpeed = 0.3
-        globeRef.current.pointOfView({ lat: 30, lng: 10, altitude: 2 })
+        // @ts-ignore
+        globeRef?.current?.pointOfView({ lat: 30, lng: 10, altitude: 2 })
     }, [])
 
-    const getAlt = (d) => d.elevation * 5e-5
+    const getAlt = (d: CityData) => d.elevation * 5e-5
 
-    const getTooltip = (d) => `
+    const getTooltip = (d: CityData) => `
       <div class="bg-fora-gray200">
         <div><b>${d.name}</b>, ${d.country}</div>
         <div>(${d.type})</div>
@@ -48,6 +49,11 @@ const World = () => {
             : window.innerWidth < 1024
             ? window.innerWidth / 2
             : window.innerWidth / 2
+
+    const getPointColor = (d: CityData) => (d.upcoming ? "#00FFEA" : "#F8F6F2")
+
+    const onPointClick = (city: CityData) => window.open(`https://en.wikipedia.org/wiki/${city.name}`, "_blank")
+
     return (
         <Globe
             height={width}
@@ -62,36 +68,27 @@ const World = () => {
             hexPolygonResolution={3}
             hexPolygonMargin={0.7}
             hexPolygonColor={() => "#ECE5D8"}
-            onPointHover={(point) => {
-                // console.log('point', point);
-                console.log(globeRef.current)
-                // globeRef.current.pointOfView({ lat: point.lat, lng: point.lon, altitude: 3 });
-            }}
-            // hexPolygonColor={() => `#${Math.round(Math.random() * Math.pow(2, 24)).toString(16).padStart(6, '0')}`}
             pointLat="lat"
             pointLng="lon"
             atmosphereColor="#00FFEA"
             atmosphereAltitude={0.1}
-            pointAltitude={getAlt}
+            pointAltitude={(d) => getAlt(d as CityData)}
             pointRadius={0.15}
-            pointColor={(d) => {
-                console.log(d.upcoming)
-                return d.upcoming ? "#00FFEA" : "#F8F6F2"
-            }}
-            pointLabel={getTooltip}
-            onPointClick={(point) => window.open(`https://en.wikipedia.org/wiki/${point.name}`, "_blank")}
+            pointColor={(d) => getPointColor(d as CityData)}
+            pointLabel={(o) => getTooltip(o as CityData)}
+            onPointClick={(point) => onPointClick(point as CityData)}
             labelsData={cities}
             labelLat="lat"
             labelLng="lon"
-            labelAltitude={(d) => getAlt(d) + 1e-6}
+            labelAltitude={(d) => getAlt(d as CityData) + 1e-6}
             labelDotRadius={0.3}
             labelDotOrientation={() => "bottom"}
             labelColor={(d) => "#00FFEA"}
             labelText="name"
             labelSize={1.5}
             labelResolution={0}
-            labelLabel={getTooltip}
-            onLabelClick={(label) => window.open(`https://en.wikipedia.org/wiki/${label.name}`, "_blank")}
+            labelLabel={(d) => getTooltip(d as CityData)}
+            onLabelClick={(label) => onPointClick(label as CityData)}
             objectRotation={{ x: 10, y: 0, z: 0 }}
         />
     )
